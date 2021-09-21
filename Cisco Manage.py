@@ -1,7 +1,7 @@
 from netmiko import ConnectHandler
 import getpass
 import sys
-#test
+
 USER = input("Username: ")
 PASSWORD = getpass.getpass()
 
