@@ -13,10 +13,10 @@ for i in device_list:
                'password': PASSWORD, }
     ssh = ConnectHandler(**CONNECT)
     show = ssh.send_command('sh ip int br | i 1/0/1')
-    show_hostname = ssh.send_command('sh run | i hostname')
-    print(show_hostname)
+    show_hostname = ''.join(ssh.send_command("sh running-config | i hostname"))
+    show_hostname = show_hostname[9::]
     test = open(r"c:\test\test3.txt", 'a')
-    print(show_hostname + ' ' + CONNECT.pop('ip'), file=test)
+    print('HOST: ' + show_hostname + ' ' + 'IP-address: ' + CONNECT.pop('ip'), file=test)
     print(show, file=test)
     print("---" * 10, file=test)
-    
+
